@@ -1,0 +1,49 @@
+"""
+Sesion 2. 
+19/08/2025
+
+Velazquez Aldrete Zyanya Valentina 
+
+Ejercicio 4.Genera una función longitud para la clase tRNA y una función longitud para la clase proteina.  
+La primera regresa el numero de nuclotidos, la segunda, el número de nucleotidos y de aminoacidos
+
+"""
+from VelazquezAldrete_ZyanyaValentina_Ejercicio3 import tRNA, Proteina
+
+# Extender la clase tRNA con la función longitud
+class tRNA_extendido(tRNA):
+    def longitud(self):
+        """Regresa el número de nucleótidos del tRNA"""
+        num_nucleotidos = len(self.secuencia)
+        print(f"El tRNA {self.nombre} tiene {num_nucleotidos} nucleótidos")
+        return num_nucleotidos
+
+# Extender la clase Proteina con la función longitud
+class Proteina_extendida(Proteina):
+    def longitud(self):
+        """
+        Regresa el número de nucleótidos y aminoácidos de la proteína.
+        Considerando que cada 3 nucleótidos codifican para 1 aminoácido.
+        """
+        num_nucleotidos = len(self.secuencia)
+        num_aminoacidos = num_nucleotidos // 3  # División entera
+        
+        print(f"La proteína {self.nombre} tiene:")
+        print(f" - {num_nucleotidos} nucleótidos en su secuencia codificante")
+        print(f" - {num_aminoacidos} aminoácidos en la cadena polipeptídica")
+        
+        return num_nucleotidos, num_aminoacidos
+
+# Prueba
+if __name__ == "__main__":
+    # Crear objetos con las clases extendidas
+    trna_ext = tRNA_extendido('tRNA-Met', 'GGGCAGAGUCCUAGCGUAA', 'humano', None, 'CAU', 'Metionina')
+    proteina_ext = Proteina_extendida('Insulina', 'AUGGCCAUGAUGAUGAUGAUGAA', 'humano', None, 
+                                    '', '', 'Terciaria', 'Regulación de glucosa')
+    
+    # Nuevas funciones
+    print("tRNA Extendido")
+    trna_ext.longitud()
+    
+    print("\nProteína Extendida ")
+    proteina_ext.longitud()
